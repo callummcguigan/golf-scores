@@ -159,13 +159,13 @@ function AuthForm() {
                         <Form.Control type="password" required ref={enteredPassword} placeholder="Password.." />
                     </Form.Group>
                     <div className='centered'>
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" className="button">
                             {isLogin ? 'Login' : 'Create Account'}
                         </Button>
                     </div>
 
                     <div className='centered'>
-                        <Button variant="primary" onClick={switchAuthModeHandler}>
+                        <Button variant="primary" onClick={switchAuthModeHandler} className="button">
                             {isLogin ? 'Create new account' : 'Login with existing account'}
                         </Button>
                     </div>
