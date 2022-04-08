@@ -50,7 +50,7 @@ function CarouselPage() {
                     />
                 </div>
                 <Carousel.Caption>
-                    <h3 className='blackText'>View User's Published Scores</h3>
+                    <h3 className='blackText'>View Users Published Scores</h3>
                     <Link href="/ViewPublishedRounds">
                         <a className="navLink">View Published Scores</a>
                     </Link>
