@@ -65,7 +65,7 @@ function PublishedScores(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.scores.map((score, key) => (
+                    {props.scores && props.scores.map((score, key) => (
                         <PublishedScore
                             key={key}
                             score={score.score}
