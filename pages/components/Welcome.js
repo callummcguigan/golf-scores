@@ -1,0 +1,48 @@
+import AuthContext from '../../store/auth-context';
+import { useEffect, useContext, useState } from 'react';
+import CarouselPage from './CarouselPage';
+
+function Welcome() {
+
+    const authCtx = useContext(AuthContext);
+    const [name, setName] = useState();
+
+
+    useEffect(() => {
+        fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAhtJKjKn1JstR6g8QT221oxblZOUv2rkQ",
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                idToken: authCtx.token
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(res => {
+        return res.json();
+
+    }).then(data => {
+        const checkName = data.users[0].displayName;
+
+        if (checkName != undefined) {
+            setName(data.users[0].displayName);
+        } else {
+            setName('No Display Name Set, Manage Account To Set A Name');
+        }
+        
+        
+    })
+    })
+
+
+    return (
+        <div className='container'>
+            <h1>Hello {name}, ready to track your golf game?</h1>
+            <CarouselPage/>
+        </div>
+    );
+}
+
+
+export default Welcome;
