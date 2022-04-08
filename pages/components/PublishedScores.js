@@ -82,7 +82,7 @@ function PublishedScores(props) {
                 </tbody>
             </Table>
 
-            {props.scores.forEach(score => {
+            {props.scores && props.scores.forEach(score => {
                     calcAverageScore = calcAverageScore + parseFloat(score.score)
                     calcAverageGreens = calcAverageGreens + parseFloat(score.greens)
                     calcAverageFairways = calcAverageFairways + parseFloat(score.fairways)
