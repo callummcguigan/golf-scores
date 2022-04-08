@@ -66,7 +66,7 @@ function Scores(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.scores.map((score, key) => (
+                    {props.scores && props.scores.map((score, key) => (
                         <Score
                             key={key}
                             score={score.score}
@@ -83,7 +83,7 @@ function Scores(props) {
                 </tbody>
             </Table>
 
-            {props.scores.forEach(score => {
+            {props.scores && props.scores.forEach(score => {
                 if (score.user == idOfUser) {
                     calcAverageScore = calcAverageScore + parseFloat(score.score)
                     calcAverageGreens = calcAverageGreens + parseFloat(score.greens)
