@@ -18,7 +18,7 @@ function Averages(props) {
             <div className="container">
                 <p>Rounds Played:  {props.averages}</p>
                 <p>Average Score: {props.avgScore}</p>
-                <p>Average Putts: {props.avgPutts.toFixed(2)}</p>
+                <p>Average Putts: {props.avgPutts}</p>
             </div>
 
             <div className="pieChart">
