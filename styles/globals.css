@@ -195,6 +195,29 @@ Note: Beware of modifying this element as it can break the animations - you shou
   display: none;
 }
 
+.scoreContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileScore{
+  border: 2px outset #696969;
+  margin: 10px;
+  padding: 10px;
+}
+
+.center{
+  text-align: center;
+}
+
+.mobileButton{
+  margin: 5px;
+}
+
+.logo{
+  color: red
+}
+
 @media (max-width: 767px){
   .hideUnlessMobile{
     display: block;
@@ -205,5 +228,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
   .container{
     padding-top: 70px;
+  }
+
+  .hide{
+    display: none;
   }
 }

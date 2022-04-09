@@ -38,7 +38,8 @@ function Welcome() {
 
     return (
         <div className='container'>
-            <h1>Hello {name}, ready to track your golf game?</h1>
+            <h1 className='center'>Hello {name} </h1>
+            <p className='center'>Ready to track your golf rounds? Or perhaps check how your fellow golfers have played?</p>
             <CarouselPage/>
         </div>
     );

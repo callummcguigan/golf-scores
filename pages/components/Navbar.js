@@ -21,7 +21,7 @@ function Navbar() {
         <div className="navbar">
             <div>
                 <Link href="/">
-                    <a className="navLink">Golf Score App</a>
+                    <a className="navLink logo">Golf Score App</a>
                 </Link>
             </div>
 

@@ -1,11 +1,12 @@
 
-import Score from "../components/Score";
+import Score from "./Score";
 import Averages from "./Averages";
 import Table from 'react-bootstrap/Table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../store/auth-context';
 import { useEffect, useContext, useState } from 'react';
 import Loading from "./Loading";
+import MobileScore from "./MobileScore";
 
 
 function Scores(props) {
@@ -73,14 +74,14 @@ function Scores(props) {
 
     if (isLoading) {
         return (
-            <Loading/>
+            <Loading />
         )
     } else {
         return (
             <div className="container">
 
                 <h3>My Scores</h3>
-                <Table striped bordered hover>
+                <Table striped bordered hover className="hide">
                     <thead>
                         <tr>
                             <th>Course</th>
@@ -112,6 +113,27 @@ function Scores(props) {
                         ))}
                     </tbody>
                 </Table>
+
+                <div className="hideUnlessMobile">
+                    <div className="scoreContainer">
+                        {scores && scores.map((score, key) => (
+                            <MobileScore
+                                key={key}
+                                score={score.score}
+                                greens={score.greens}
+                                fairways={score.fairways}
+                                putts={score.putts}
+                                course={score.course}
+                                date={score.date}
+                                published={score.published}
+                                id={score._id}
+                                user={score.userID}
+                                localUser={idOfUser}
+                                update={fetchData}
+                            />
+                        ))}
+                    </div>
+                </div>
 
 
 

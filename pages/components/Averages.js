@@ -5,8 +5,8 @@ import { VictoryPie } from "victory-pie";
 function Averages(props) {
 
     const fairwayData = [
-        { x: ((props.avgFairways / 15) * 100).toFixed(2) + "%", y: (props.avgFairways / 15) * 100 },
-        { x: (100 - ((props.avgFairways / 15) * 100).toFixed(2)) + "%", y: (100 - ((props.avgFairways / 15) * 100)) },
+        { x: ((props.avgFairways / 15) * 100).toFixed(2) + "%", y: (props.avgFairways / 14) * 100 },
+        { x: (100 - ((props.avgFairways / 15) * 100).toFixed(2)) + "%", y: (100 - ((props.avgFairways / 14) * 100)) },
     ];
     const greensData = [
         { x: ((props.avgGreens / 18) * 100).toFixed(2) + "%", y: (props.avgGreens / 18) * 100 },
@@ -18,7 +18,7 @@ function Averages(props) {
             <div className="container">
                 <p>Rounds Played:  {props.averages}</p>
                 <p>Average Score: {props.avgScore}</p>
-                <p>Average Putts: {props.avgPutts}</p>
+                <p>Average Putts: {props.avgPutts.toFixed(2)}</p>
             </div>
 
             <div className="pieChart">
