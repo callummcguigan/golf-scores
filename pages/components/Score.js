@@ -20,7 +20,7 @@ function Score(props) {
             }
         });
 
-        router.replace('/ViewScores')
+        window.location.reload()
 
     }
 
@@ -37,8 +37,7 @@ function Score(props) {
         });
 
         handleShow();
-
-        router.replace('/ViewScores')
+        props.fetchData;
 
     }
 
@@ -54,13 +53,17 @@ function Score(props) {
             }
         });
 
-        router.replace('/ViewScores')
+        props.fetchData;
+        window.location.reload()
 
     }
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        window.location.reload()
+    }
 
     const handleShow = () => setShow(true);
 

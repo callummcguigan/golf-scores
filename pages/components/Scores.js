@@ -9,6 +9,7 @@ import { useEffect, useContext, useState } from 'react';
 
 function Scores(props) {
 
+    const [scores, setScores] = useState([])
     const authCtx = useContext(AuthContext)
     const [idOfUser, setID] = useState();
     let rounds = 0;
@@ -30,9 +31,9 @@ function Scores(props) {
         }).then(data => {
             try {
                 const checkID = data.users[0].localId;
-                } catch (e) {
-                    console.log("error")
-                }
+            } catch (e) {
+                console.log("error")
+            }
 
             if (checkID != undefined) {
                 setID(data.users[0].localId);
@@ -41,7 +42,21 @@ function Scores(props) {
             }
 
         })
-    })
+
+        fetchData();
+
+    }, [])
+
+    const fetchData = async () => {
+        fetch('/api/getScores')
+            .then(res => {
+                return res.json()
+            }).then(data => {
+                setScores(data.message)
+                
+            })
+            
+    }
 
     let calcAverageScore = 0;
     let calcAverageGreens = 0;
@@ -66,7 +81,7 @@ function Scores(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.scores && props.scores.map((score, key) => (
+                    {scores && scores.map((score, key) => (
                         <Score
                             key={key}
                             score={score.score}
@@ -75,25 +90,26 @@ function Scores(props) {
                             putts={score.putts}
                             course={score.course}
                             date={score.date}
-                            id={score.id}
-                            user={score.user}
-                            localUser={idOfUser}
                             published={score.published}
-                        />))}
+                            id={score._id}
+                            update={fetchData}
+                        />
+                    ))}
                 </tbody>
             </Table>
 
-            {props.scores && props.scores.forEach(score => {
+            {/* { {scores && scores.forEach(score => {
                 if (score.user == idOfUser) {
                     calcAverageScore = calcAverageScore + parseFloat(score.score)
                     calcAverageGreens = calcAverageGreens + parseFloat(score.greens)
                     calcAverageFairways = calcAverageFairways + parseFloat(score.fairways)
                     calcAveragePutts = calcAveragePutts + parseFloat(score.putts)
                     rounds = rounds + 1;
+                    console.log("done")
                 }
             })}
-            <Averages averages={rounds} avgScore={calcAverageScore / rounds } avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} />
-
+            <Averages averages={rounds} avgScore={calcAverageScore / rounds} avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} /> }
+             */}
         </div>
     );
 }
