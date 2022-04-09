@@ -9,11 +9,15 @@ import { useEffect, useContext, useState } from 'react';
 
 function PublishedScores(props) {
 
+    const [scores, setScores] = useState([])
     const authCtx = useContext(AuthContext)
     const [idOfUser, setID] = useState();
     let rounds = 0;
 
     useEffect(() => {
+
+        setShow(true)
+
         fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAhtJKjKn1JstR6g8QT221oxblZOUv2rkQ",
             {
                 method: 'POST',
@@ -29,7 +33,7 @@ function PublishedScores(props) {
 
         }).then(data => {
             try {
-            const checkID = data.users[0].localId;
+                const checkID = data.users[0].localId;
             } catch (e) {
                 console.log("error")
             }
@@ -41,7 +45,23 @@ function PublishedScores(props) {
             }
 
         })
-    })
+
+        fetchData();
+
+        setShow(false)
+
+    }, [])
+
+    const fetchData = async () => {
+        fetch('/api/getPublishedScores')
+            .then(res => {
+                return res.json()
+            }).then(data => {
+                setScores(data.message)
+
+            })
+
+    }
 
     let calcAverageScore = 0;
     let calcAverageGreens = 0;
@@ -65,7 +85,7 @@ function PublishedScores(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.scores && props.scores.map((score, key) => (
+                    {scores && scores.map((score, key) => (
                         <PublishedScore
                             key={key}
                             score={score.score}
@@ -82,14 +102,14 @@ function PublishedScores(props) {
                 </tbody>
             </Table>
 
-            {props.scores && props.scores.forEach(score => {
+            {/* {scores && scores.forEach(score => {
                     calcAverageScore = calcAverageScore + parseFloat(score.score)
                     calcAverageGreens = calcAverageGreens + parseFloat(score.greens)
                     calcAverageFairways = calcAverageFairways + parseFloat(score.fairways)
                     calcAveragePutts = calcAveragePutts + parseFloat(score.putts)
                     rounds = rounds + 1;
             })}
-            <Averages averages={rounds} avgScore={calcAverageScore / rounds } avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} />
+            <Averages averages={rounds} avgScore={calcAverageScore / rounds } avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} /> */}
 
         </div>
     );

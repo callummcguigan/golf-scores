@@ -6,15 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../store/auth-context';
 import { useEffect, useContext, useState } from 'react';
 
-import Modal from 'react-bootstrap/Modal';
-
 
 function Scores(props) {
 
     const [scores, setScores] = useState([])
     const authCtx = useContext(AuthContext)
     const [idOfUser, setID] = useState();
-    const [show, setShow] = useState(false);
     let rounds = 0;
 
     useEffect(() => {
@@ -108,14 +105,7 @@ function Scores(props) {
                 </tbody>
             </Table>
 
-            <Modal show={show}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Scores Loading!</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Loading..</Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
-            </Modal>
+            
 
             {/* { {scores && scores.forEach(score => {
                 if (score.user == idOfUser) {
