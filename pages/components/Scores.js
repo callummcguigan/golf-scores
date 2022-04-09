@@ -16,7 +16,6 @@ function Scores(props) {
 
     useEffect(() => {
 
-        setShow(true)
 
         fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAhtJKjKn1JstR6g8QT221oxblZOUv2rkQ",
             {
@@ -48,7 +47,6 @@ function Scores(props) {
 
         fetchData();
 
-        setShow(false)
 
     }, [])
 
