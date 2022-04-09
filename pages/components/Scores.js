@@ -92,6 +92,8 @@ function Scores(props) {
                             date={score.date}
                             published={score.published}
                             id={score._id}
+                            user={score.userID}
+                            localUser={idOfUser}
                             update={fetchData}
                         />
                     ))}

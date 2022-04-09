@@ -72,9 +72,6 @@ function Score(props) {
 
     if (props.user == props.localUser) {
 
-
-
-
         return (
             <tr>
                 <td>{props.course}</td>
