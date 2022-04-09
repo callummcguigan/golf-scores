@@ -6,15 +6,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../store/auth-context';
 import { useEffect, useContext, useState } from 'react';
 
+import Modal from 'react-bootstrap/Modal';
+
 
 function Scores(props) {
 
     const [scores, setScores] = useState([])
     const authCtx = useContext(AuthContext)
     const [idOfUser, setID] = useState();
+    const [show, setShow] = useState(false);
     let rounds = 0;
 
     useEffect(() => {
+
+        setShow(true)
+
         fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAhtJKjKn1JstR6g8QT221oxblZOUv2rkQ",
             {
                 method: 'POST',
@@ -45,6 +51,8 @@ function Scores(props) {
 
         fetchData();
 
+        setShow(false)
+
     }, [])
 
     const fetchData = async () => {
@@ -53,9 +61,9 @@ function Scores(props) {
                 return res.json()
             }).then(data => {
                 setScores(data.message)
-                
+
             })
-            
+
     }
 
     let calcAverageScore = 0;
@@ -99,6 +107,15 @@ function Scores(props) {
                     ))}
                 </tbody>
             </Table>
+
+            <Modal show={show}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Scores Loading!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Loading..</Modal.Body>
+                <Modal.Footer>
+                </Modal.Footer>
+            </Modal>
 
             {/* { {scores && scores.forEach(score => {
                 if (score.user == idOfUser) {
