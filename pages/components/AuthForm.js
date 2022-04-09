@@ -119,7 +119,7 @@ function AuthForm() {
 
             {(!isLogin && (
                 <Form onSubmit={submitHandlerCreate}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3" controlId="formBasicText">
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="text" placeholder="Name.." required ref={enteredName} />
                     </Form.Group>
@@ -135,12 +135,12 @@ function AuthForm() {
                         <Form.Control type="password" required ref={enteredPassword} placeholder="Password.." />
                     </Form.Group>
                     <div className='centered'>
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" className="button">
                             {isLogin ? 'Login' : 'Create Account'}
                         </Button>
                     </div>
                     <div className='centered'>
-                        <Button variant="primary" onClick={switchAuthModeHandler}>
+                        <Button variant="primary" onClick={switchAuthModeHandler} className="button">
                             {isLogin ? 'Create new account' : 'Login with existing account'}
                         </Button>
                     </div>

@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../store/auth-context';
 import { useEffect, useContext, useState } from 'react';
+import Loading from "./Loading";
 
 
 function Scores(props) {
@@ -13,6 +14,8 @@ function Scores(props) {
     const authCtx = useContext(AuthContext)
     const [idOfUser, setID] = useState();
     let rounds = 0;
+
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
 
@@ -48,6 +51,7 @@ function Scores(props) {
         fetchData();
 
 
+
     }, [])
 
     const fetchData = async () => {
@@ -58,6 +62,7 @@ function Scores(props) {
                 setScores(data.message)
 
             })
+        setIsLoading(false)
 
     }
 
@@ -66,59 +71,68 @@ function Scores(props) {
     let calcAverageFairways = 0;
     let calcAveragePutts = 0;
 
-    return (
-        <div className="container">
+    if (isLoading) {
+        return (
+            <Loading/>
+        )
+    } else {
+        return (
+            <div className="container">
 
-            <h3>Scores</h3>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Course</th>
-                        <th>Date</th>
-                        <th>Score</th>
-                        <th>Greens</th>
-                        <th>Fairways</th>
-                        <th>Putts</th>
-                        <th>Publish Round</th>
-                        <th>Delete Round</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {scores && scores.map((score, key) => (
-                        <Score
-                            key={key}
-                            score={score.score}
-                            greens={score.greens}
-                            fairways={score.fairways}
-                            putts={score.putts}
-                            course={score.course}
-                            date={score.date}
-                            published={score.published}
-                            id={score._id}
-                            user={score.userID}
-                            localUser={idOfUser}
-                            update={fetchData}
-                        />
-                    ))}
-                </tbody>
-            </Table>
+                <h3>My Scores</h3>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Date</th>
+                            <th>Score</th>
+                            <th>Greens</th>
+                            <th>Fairways</th>
+                            <th>Putts</th>
+                            <th>Publish Round</th>
+                            <th>Delete Round</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {scores && scores.map((score, key) => (
+                            <Score
+                                key={key}
+                                score={score.score}
+                                greens={score.greens}
+                                fairways={score.fairways}
+                                putts={score.putts}
+                                course={score.course}
+                                date={score.date}
+                                published={score.published}
+                                id={score._id}
+                                user={score.userID}
+                                localUser={idOfUser}
+                                update={fetchData}
+                            />
+                        ))}
+                    </tbody>
+                </Table>
 
-            
 
-            {/* { {scores && scores.forEach(score => {
-                if (score.user == idOfUser) {
-                    calcAverageScore = calcAverageScore + parseFloat(score.score)
-                    calcAverageGreens = calcAverageGreens + parseFloat(score.greens)
-                    calcAverageFairways = calcAverageFairways + parseFloat(score.fairways)
-                    calcAveragePutts = calcAveragePutts + parseFloat(score.putts)
-                    rounds = rounds + 1;
-                    console.log("done")
-                }
-            })}
-            <Averages averages={rounds} avgScore={calcAverageScore / rounds} avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} /> }
-             */}
-        </div>
-    );
+
+                {scores && scores.forEach(score => {
+                    if (score.userID == idOfUser) {
+                        calcAverageScore = calcAverageScore + parseFloat(score.score)
+                        calcAverageGreens = calcAverageGreens + parseFloat(score.greens)
+                        calcAverageFairways = calcAverageFairways + parseFloat(score.fairways)
+                        calcAveragePutts = calcAveragePutts + parseFloat(score.putts)
+                        rounds = rounds + 1;
+                        console.log("done")
+                    }
+                })}
+                <Averages averages={rounds} avgScore={calcAverageScore / rounds} avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} />
+
+            </div>
+
+        );
+    }
+
+
 }
 
 export default Scores;

@@ -3,6 +3,7 @@ import { MongoClient } from 'mongodb'
 import Navbar from "../components/Navbar";
 import AuthContext from "../../store/auth-context";
 import {useContext } from 'react';
+import Hamburger from "../components/Hamburger";
 
 function ViewScores(props) {
 
@@ -12,6 +13,7 @@ function ViewScores(props) {
 
     return (
         <div>
+            <Hamburger pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
             <Navbar />
 
             {(isLoggedIn && (

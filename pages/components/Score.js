@@ -81,12 +81,12 @@ function Score(props) {
                 <td>{props.fairways}</td>
                 <td>{props.putts}</td>
                 {(props.published == "yes" && (
-                    <td><button onClick={unpublishRound}>Unpublish?</button></td>
+                    <td><Button onClick={unpublishRound}>Unpublish?</Button></td>
                 ))}
                 {(props.published == "no" && (
-                    <td><button onClick={publishRound}>Publish?</button></td>
+                    <td><Button onClick={publishRound}>Publish?</Button></td>
                 ))}
-                <td><button onClick={deleteRound}>Delete?</button></td>
+                <td><Button onClick={deleteRound}>Delete?</Button></td>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Score Published!</Modal.Title>

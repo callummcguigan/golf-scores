@@ -69,7 +69,7 @@ function PublishedScores(props) {
     return (
         <div className="container">
 
-            <h3>Scores</h3>
+            <h3>Published Scores</h3>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -100,14 +100,14 @@ function PublishedScores(props) {
                 </tbody>
             </Table>
 
-            {/* {scores && scores.forEach(score => {
+            {scores && scores.forEach(score => {
                     calcAverageScore = calcAverageScore + parseFloat(score.score)
                     calcAverageGreens = calcAverageGreens + parseFloat(score.greens)
                     calcAverageFairways = calcAverageFairways + parseFloat(score.fairways)
                     calcAveragePutts = calcAveragePutts + parseFloat(score.putts)
                     rounds = rounds + 1;
             })}
-            <Averages averages={rounds} avgScore={calcAverageScore / rounds } avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} /> */}
+            <Averages averages={rounds} avgScore={calcAverageScore / rounds } avgGreens={calcAverageGreens / rounds} avgFairways={calcAverageFairways / rounds} avgPutts={calcAveragePutts / rounds} />
 
         </div>
     );
