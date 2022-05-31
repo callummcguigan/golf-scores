@@ -1,26 +1,26 @@
 import Navbar from "../components/Navbar";
 import ScoreInput from "../components/ScoreInput";
 import AuthContext from "../../store/auth-context";
-import {useContext } from 'react';
+import { useContext, useState } from "react";
 import Hamburger from "../components/Hamburger";
+import InputSelection from "../components/InputSelection";
 
-function AddScore(){
+function AddScore() {
+  const authCtx = useContext(AuthContext);
 
-    const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
 
-    const isLoggedIn = authCtx.isLoggedIn
+  return (
+    <div>
+      <Hamburger
+        pageWrapId={"page-wrap"}
+        outerContainerId={"outer-container"}
+      />
+      <Navbar />
 
-    return(
-        <div>
-            <Hamburger pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
-            <Navbar/>
-
-            {(isLoggedIn && (
-            <ScoreInput/>
-            ))}
-            
-        </div>
-    );
+      {isLoggedIn && <InputSelection />}
+    </div>
+  );
 }
 
 export default AddScore;

@@ -6,8 +6,8 @@ body {
   margin: 0;
   font-family: 'Quicksand', sans-serif !important;
   
-  background-color: #D9AFD9 !important;
-  background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%) !important;
+    background-color: #8EC5FC !important;
+      background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
   
 
   background-size: contain;
@@ -52,6 +52,12 @@ a {
 
 .navLink:hover{
   color: slategray;
+}
+
+.navLinkCaro{
+  padding: 20px;
+  color: black;
+  text-decoration: underline ;
 }
 
 
@@ -200,6 +206,20 @@ Note: Beware of modifying this element as it can break the animations - you shou
   flex-direction: column;
 }
 
+.stat_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.greens, .fairways, .putts, .shortgame{
+  width: 33%;
+  text-align: center;
+  padding: 25px;
+  margin: 10px;
+-webkit-box-shadow: 5px 5px 14px -7px #8F8F8F;
+  box-shadow: 5px 5px 14px -7px #8F8F8F;
+}
+
 .mobileScore{
   border: 2px outset #696969;
   margin: 10px;
@@ -218,6 +238,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
   color: red
 }
 
+.hidden{
+  display: none;
+}
+
+.scoreButton{
+  margin-top: 10px;
+}
+
 @media (max-width: 767px){
   .hideUnlessMobile{
     display: block;
@@ -233,4 +261,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .hide{
     display: none;
   }
+
+    .stat_container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .greens,
+    .fairways,
+    .putts,
+    .shortgame {
+      width: 100%;
+      
+    }
 }

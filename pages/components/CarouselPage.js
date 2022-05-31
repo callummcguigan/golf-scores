@@ -22,7 +22,7 @@ function CarouselPage() {
                 <Carousel.Caption>
                     <h3 className='blackText'>Enter A New Score</h3>
                     <Link href="/AddScore">
-                        <a className="navLink">Add Score</a>
+                        <a className="navLinkCaro">Add Score</a>
                     </Link>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -37,7 +37,7 @@ function CarouselPage() {
                 <Carousel.Caption>
                     <h3 className='blackText'>View My Previous Scores</h3>
                     <Link href="/ViewScores">
-                        <a className="navLink">View My Scores</a>
+                        <a className="navLinkCaro">View My Scores</a>
                     </Link>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -52,7 +52,7 @@ function CarouselPage() {
                 <Carousel.Caption>
                     <h3 className='blackText'>View Users Published Scores</h3>
                     <Link href="/ViewPublishedRounds">
-                        <a className="navLink">View Published Scores</a>
+                        <a className="navLinkCaro">View Published Scores</a>
                     </Link>
                 </Carousel.Caption>
             </Carousel.Item>

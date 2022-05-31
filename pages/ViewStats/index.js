@@ -1,10 +1,14 @@
+import Navbar from "../components/Navbar";
 import AuthContext from "../../store/auth-context";
-import { useEffect, useContext, useState } from "react";
-import CarouselPage from "./CarouselPage";
+import { useContext, useEffect, useState } from "react";
+import Hamburger from "../components/Hamburger";
+import Stats from "../components/Stats";
 
-function Welcome() {
+function ViewStats(props) {
   const authCtx = useContext(AuthContext);
-  const [name, setName] = useState();
+  const [userId, setUserId] = useState();
+
+  const isLoggedIn = authCtx.isLoggedIn;
 
   useEffect(() => {
     fetch(
@@ -24,25 +28,25 @@ function Welcome() {
       })
       .then((data) => {
         const checkName = data.users[0].displayName;
+        console.log(data.users[0]);
 
         if (checkName != undefined) {
-          setName(data.users[0].displayName);
-        } else {
-          setName("No Display Name Set, Manage Account To Set A Name");
+          setUserId(data.users[0].localId);
         }
       });
-  });
+  }, []);
 
   return (
-    <div className="container">
-      <h1 className="center">Hello {name} </h1>
-      <p className="center">
-        Ready to track your golf rounds? Or perhaps check how your fellow
-        golfers have played?
-      </p>
-      <CarouselPage />
+    <div>
+      <Hamburger
+        pageWrapId={"page-wrap"}
+        outerContainerId={"outer-container"}
+      />
+      <Navbar />
+
+      {isLoggedIn && <Stats userId={userId} />}
     </div>
   );
 }
 
-export default Welcome;
+export default ViewStats;

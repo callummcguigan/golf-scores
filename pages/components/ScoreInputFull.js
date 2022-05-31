@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthContext from "../../store/auth-context";
 
-function ScoreInput(props) {
+function ScoreInputFull(props) {
   const authCtx = useContext(AuthContext);
   const [userId, setID] = useState();
   const [playerName, setPlayer] = useState();
@@ -60,9 +60,9 @@ function ScoreInput(props) {
     console.log(localID);
     const inputData = {
       score: score.current.value,
-      greens: greens.current.value,
-      fairways: fairways.current.value,
-      putts: putts.current.value,
+      greens: props.g,
+      fairways: props.f,
+      putts: props.p,
       course: courseName.current.value,
       date: date.current.value,
       userID: userId,
@@ -71,9 +71,6 @@ function ScoreInput(props) {
     };
 
     score.current.value = "";
-    greens.current.value = "";
-    fairways.current.value = "";
-    putts.current.value = "";
     courseName.current.value = "";
     date.current.value = "";
     onNewJob(inputData);
@@ -121,35 +118,7 @@ function ScoreInput(props) {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="number"
-            placeholder="Greens Hit"
-            ref={greens}
-            min="0"
-            max="18"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="number"
-            placeholder="Fairways Hit"
-            ref={fairways}
-            min="0"
-            max="18"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Control
-            type="number"
-            placeholder="Putts"
-            ref={putts}
-            min="0"
-            required
-          />
-        </Form.Group>
+
         <Button variant="primary" type="submit">
           Submit
         </Button>
@@ -170,4 +139,4 @@ function ScoreInput(props) {
   );
 }
 
-export default ScoreInput;
+export default ScoreInputFull;
