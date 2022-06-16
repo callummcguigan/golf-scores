@@ -72,40 +72,42 @@ function Stats(props) {
           if (x > 2) {
             if (e.player === props.userId) {
               for (let index = 0; index < x - 2; index++) {
-                let greens = e[index][index].green;
-                let fairway = e[index][index].fairway;
-                let attempt = e[index][index].upndown;
-                if (greens === "Hit") {
-                  greensHit = greensHit + 1;
-                } else if (greens === "Short") {
-                  greensShort = greensShort + 1;
-                } else if (greens === "Long") {
-                  greensLong = greensLong + 1;
-                } else if (greens === "Left") {
-                  greensLeft = greensLeft + 1;
-                } else if (greens === "Right") {
-                  greensRight = greensRight + 1;
+                if (e[index] !== undefined) {
+                  let greens = e[index][index].green;
+                  let fairway = e[index][index].fairway;
+                  let attempt = e[index][index].upndown;
+                  if (greens === "Hit") {
+                    greensHit = greensHit + 1;
+                  } else if (greens === "Short") {
+                    greensShort = greensShort + 1;
+                  } else if (greens === "Long") {
+                    greensLong = greensLong + 1;
+                  } else if (greens === "Left") {
+                    greensLeft = greensLeft + 1;
+                  } else if (greens === "Right") {
+                    greensRight = greensRight + 1;
+                  }
+
+                  if (attempt === "Yes") {
+                    upNDown = upNDown + 1;
+                    tries = tries + 1;
+                  } else if (attempt === "No") {
+                    tries = tries + 1;
+                  }
+
+                  if (fairway === "Hit") {
+                    fairHit = fairHit + 1;
+                  } else if (fairway === "Left") {
+                    fairLeft = fairLeft + 1;
+                  } else if (fairway === "Right") {
+                    fairRight = fairRight + 1;
+                  }
+
+                  putts = putts + parseFloat(e[index][index].putts);
+                  puttDist = puttDist + parseFloat(e[index][index].puttDist);
+
+                  holesComp = holesComp + 1;
                 }
-
-                if (attempt === "Yes") {
-                  upNDown = upNDown + 1;
-                  tries = tries + 1;
-                } else if (attempt === "No") {
-                  tries = tries + 1;
-                }
-
-                if (fairway === "Hit") {
-                  fairHit = fairHit + 1;
-                } else if (fairway === "Left") {
-                  fairLeft = fairLeft + 1;
-                } else if (fairway === "Right") {
-                  fairRight = fairRight + 1;
-                }
-
-                putts = putts + parseFloat(e[index][index].putts);
-                puttDist = puttDist + parseFloat(e[index][index].puttDist);
-
-                holesComp = holesComp + 1;
               }
             }
           }

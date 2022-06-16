@@ -28,6 +28,9 @@ function Hamburger() {
           <Link href="/AddScore">
             <a className="bm-item menu-item">Add Score</a>
           </Link>
+          <Link href="/ViewScores">
+            <a className="bm-item menu-item">View Scores</a>
+          </Link>
 
           <Link href="/ViewStats">
             <a className="bm-item menu-item">View Stats</a>

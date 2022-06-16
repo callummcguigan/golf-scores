@@ -142,6 +142,7 @@ function FullScoreInput(props) {
               key={i}
             />
           ))}
+          <ScoreInputFull g={greensHit} f={fairwaysHit} p={putts} />
         </div>
       </div>
     );

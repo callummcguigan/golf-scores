@@ -4,8 +4,10 @@ import { useRef, useState, useContext, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthContext from "../../store/auth-context";
+import { useRouter } from "next/router";
 
 function ScoreInputFull(props) {
+  const router = useRouter();
   const authCtx = useContext(AuthContext);
   const [userId, setID] = useState();
   const [playerName, setPlayer] = useState();
@@ -18,8 +20,13 @@ function ScoreInputFull(props) {
   const date = useRef();
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    router.push("/ViewScores");
+  };
+  const handleShow = () => {
+    setShow(true);
+  };
 
   let localID = "";
 
