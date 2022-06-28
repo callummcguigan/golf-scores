@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AuthContext from "../../store/auth-context";
 import { useEffect, useContext, useState } from "react";
 import { VictoryPie } from "victory-pie";
+import { Oval } from  'react-loader-spinner'
 
 function Stats(props) {
   const [scores, setScores] = useState([]);
@@ -177,7 +178,7 @@ function Stats(props) {
   } else {
     return (
       <div className="container">
-        <h1>No Full Scores Added</h1>
+        <Oval color="#00BFFF" height={80} width={80} />
       </div>
     );
   }
