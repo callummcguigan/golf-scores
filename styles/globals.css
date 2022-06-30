@@ -212,6 +212,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .greens, .fairways, .putts, .shortgame{
+  background-color:lightcyan;
   width: 33%;
   text-align: center;
   padding: 25px;
@@ -244,6 +245,15 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .scoreButton{
   margin-top: 10px;
+}
+
+.selectButton{
+  margin: 10px;
+  width: 25%
+}
+
+.numberOfHoleBtn {
+  margin: 10px;
 }
 
 @media (max-width: 767px){

@@ -105,8 +105,8 @@ function FullScoreInput(props) {
     return (
       <div className="container">
         <div>
-          <Button onClick={nineHoleHandler}>9 Holes</Button>
-          <Button onClick={eighteenHoleHandler}>18 Holes</Button>
+          <Button className="numberOfHoleBtn" onClick={nineHoleHandler}>9 Holes</Button>
+          <Button className="numberOfHoleBtn" onClick={eighteenHoleHandler}>18 Holes</Button>
         </div>
       </div>
     );

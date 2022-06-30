@@ -4,6 +4,7 @@ import AuthContext from "../../store/auth-context";
 import { useEffect, useContext, useState } from "react";
 import { VictoryPie } from "victory-pie";
 import { Oval } from  'react-loader-spinner'
+import Loading from "./Loading";
 
 function Stats(props) {
   const [scores, setScores] = useState([]);
@@ -178,7 +179,7 @@ function Stats(props) {
   } else {
     return (
       <div className="container">
-        <Oval color="#00BFFF" height={80} width={80} />
+        <Loading/>
       </div>
     );
   }

@@ -71,7 +71,7 @@ function PublishedScores(props) {
     let calcAverageFairways = 0;
     let calcAveragePutts = 0;
 
-    if (isLoading) {
+    if (scores.length < 1) {
         return (
             <Loading />
         )

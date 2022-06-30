@@ -26,8 +26,8 @@ function InputSelection() {
           stats?
         </p>
 
-        <Button onClick={simpleHandler}>Simple</Button>
-        <Button onClick={fullHandler}>Full Round</Button>
+        <Button className="selectButton" onClick={simpleHandler}>Simple</Button>
+        <Button className="selectButton" onClick={fullHandler}>Full Round</Button>
       </div>
     );
   } else if (simpleOrFull === "simple") {
